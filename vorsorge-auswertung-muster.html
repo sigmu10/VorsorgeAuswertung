@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vorsorge-Auswertung — Musterbericht</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F7F5;
+    --surface:#FFFFFF;
+    --ink:#1C2B2A;
+    --ink-soft:#5A6B66;
+    --ink-faint:#8B968F;
+    --line:#E2E6E1;
+    --line-strong:#CFD6CF;
+
+    --ahv:#1F5C4D;
+    --pk:#4E9A82;
+    --s3a:#D2A24C;
+    --foreign:#A7B0AA;
+    --gap:#BF6B4E;
+
+    --serif:'Spectral',Georgia,serif;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;}
+  .page{max-width:680px;margin:0 auto;padding:0 24px 96px;}
+  .doc{animation:rise .5s ease-out both;}
+  @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.doc{animation:none;}*{transition:none !important;}}
+
+  .mast{display:flex;justify-content:space-between;align-items:baseline;padding:40px 0 20px;border-bottom:1px solid var(--line-strong);}
+  .mast .who{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.1px;}
+  .mast .who span{display:block;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--ink-soft);margin-top:3px;}
+  .badge{font-size:12px;color:var(--ink-soft);border:1px solid var(--line-strong);border-radius:999px;padding:4px 11px;white-space:nowrap;}
+
+  .hero{padding:44px 0 40px;border-bottom:1px solid var(--line);}
+  .hero .lead{font-size:14px;color:var(--ink-soft);margin:0 0 10px;}
+  .hero .amount{font-family:var(--serif);font-weight:400;font-size:clamp(52px,13vw,76px);line-height:1;letter-spacing:-1px;font-variant-numeric:tabular-nums;}
+  .hero .amount .cur{font-size:.42em;color:var(--ink-soft);vertical-align:.32em;margin-right:.18em;font-family:var(--sans);font-weight:500;}
+  .hero .unit{font-size:15px;color:var(--ink-soft);margin-top:12px;}
+  .hero .netto{font-size:13px;color:var(--ink-faint);margin-top:2px;font-variant-numeric:tabular-nums;}
+  .hero .say{font-size:15px;color:var(--ink);margin-top:20px;max-width:52ch;}
+
+  section{padding:34px 0;border-bottom:1px solid var(--line);}
+  h2{font-family:var(--serif);font-weight:500;font-size:22px;margin:0 0 6px;letter-spacing:.1px;}
+  .sub{font-size:14px;color:var(--ink-soft);margin:0 0 22px;max-width:56ch;}
+
+  .bar{display:flex;width:100%;height:24px;border-radius:5px;overflow:hidden;background:var(--line);margin-bottom:8px;}
+  .bar > span{display:block;height:100%;}
+
+  .pillars{display:flex;flex-direction:column;}
+  .pil{padding:20px 0;border-top:1px solid var(--line);}
+  .pil:first-child{border-top:none;}
+  .pil .head{display:grid;grid-template-columns:13px 1fr auto;gap:11px;align-items:baseline;}
+  .pil .dot{width:11px;height:11px;border-radius:3px;margin-top:6px;}
+  .pil .name{font-weight:600;font-size:16px;}
+  .pil .name .role{font-weight:400;color:var(--ink-faint);font-size:13px;margin-left:7px;}
+  .pil .amt{font-family:var(--serif);font-size:22px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .pil .amt small{font-family:var(--sans);font-size:12px;color:var(--ink-faint);font-weight:400;margin-left:3px;}
+  .pil .what{font-size:14px;color:var(--ink-soft);margin:7px 0 0;padding-left:24px;max-width:56ch;}
+  .pil .calc{margin:11px 0 0 24px;font-size:13px;color:var(--ink-soft);background:var(--surface);border-left:2px solid;border-radius:0 6px 6px 0;padding:8px 12px;font-variant-numeric:tabular-nums;}
+  .pil .calc b{color:var(--ink);font-weight:600;}
+
+  .track{position:relative;height:40px;border-radius:6px;background:var(--surface);border:1px solid var(--line);overflow:hidden;}
+  .fill{position:absolute;top:0;left:0;height:100%;background:var(--pk);}
+  .short{position:absolute;top:0;height:100%;background:repeating-linear-gradient(45deg,#EBD5CC,#EBD5CC 6px,#F3E4DD 6px,#F3E4DD 12px);}
+  .tick{position:absolute;top:-7px;bottom:-7px;width:2px;background:var(--ink);opacity:.55;}
+  .tick b{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-size:11px;color:var(--ink-soft);white-space:nowrap;font-weight:500;}
+  .gaplabels{display:flex;justify-content:space-between;margin-top:26px;gap:16px;flex-wrap:wrap;}
+  .gaplabels div{font-size:13px;color:var(--ink-soft);}
+  .gaplabels b{display:block;font-size:19px;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums;margin-top:1px;}
+  .gaplabels .neg b{color:var(--gap);}
+
+  .seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:8px;overflow:hidden;background:var(--surface);}
+  .seg button{font-family:var(--sans);font-size:14px;color:var(--ink-soft);background:none;border:none;padding:9px 16px;cursor:pointer;border-right:1px solid var(--line);transition:background .15s,color .15s;}
+  .seg button:last-child{border-right:none;}
+  .seg button[aria-pressed="true"]{background:var(--ahv);color:#fff;}
+  .seg button:focus-visible{outline:2px solid var(--ahv);outline-offset:2px;}
+  .result{margin-top:22px;display:flex;align-items:baseline;gap:20px;flex-wrap:wrap;}
+  .result .big{font-family:var(--serif);font-size:38px;line-height:1;font-variant-numeric:tabular-nums;transition:opacity .18s ease;}
+  .result .big .cur{font-size:.42em;color:var(--ink-soft);vertical-align:.3em;margin-right:.15em;font-family:var(--sans);font-weight:500;}
+  .result .meta{font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  .result .meta .glabel{color:var(--gap);font-weight:600;}
+  .note{margin-top:16px;font-size:14px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--s3a);border-radius:0 8px 8px 0;padding:12px 14px;max-width:58ch;}
+
+  .lever{padding:18px 0;border-top:1px solid var(--line);}
+  .lever:first-of-type{border-top:none;padding-top:4px;}
+  .lever h3{font-family:var(--sans);font-size:16px;font-weight:600;margin:0 0 4px;}
+  .lever p{margin:0;font-size:14px;color:var(--ink-soft);}
+  .lever .mine{color:var(--ink);margin-top:4px;}
+  .lever .mine::before{content:"Für dich: ";font-weight:600;color:var(--ahv);}
+
+  footer{padding-top:30px;font-size:12.5px;color:var(--ink-faint);line-height:1.6;}
+  footer strong{color:var(--ink-soft);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="page">
+<div class="doc">
+
+  <div class="mast">
+    <div class="who">Vorsorge-Auswertung<span>Thomas M. · 44 · seit 2016 in der Schweiz</span></div>
+    <div class="badge">Musterbericht · Beispieldaten</div>
+  </div>
+
+  <div class="hero">
+    <p class="lead">Voraussichtlich verfügbar ab der Pensionierung mit 65</p>
+    <div class="amount"><span class="cur">CHF</span>5'020</div>
+    <div class="unit">brutto pro Monat</div>
+    <div class="netto">nach Steuern bleiben davon rund CHF 4'520 netto</div>
+    <p class="say">Die Summe aus allen drei Säulen plus deiner deutschen Rente – so viel steht dir Monat für Monat zur Verfügung.</p>
+  </div>
+
+  <section>
+    <h2>Woraus sich das zusammensetzt</h2>
+    <p class="sub">Vier Quellen ergeben dein Einkommen. Bei jeder siehst du, was sie ist – und wie genau die Zahl entsteht.</p>
+
+    <div class="bar">
+      <span style="width:31.1%;background:var(--ahv);"></span>
+      <span style="width:45.2%;background:var(--pk);"></span>
+      <span style="width:11.6%;background:var(--s3a);"></span>
+      <span style="width:12.1%;background:var(--foreign);"></span>
+    </div>
+
+    <div class="pillars">
+
+      <div class="pil">
+        <div class="head">
+          <span class="dot" style="background:var(--ahv);"></span>
+          <span class="name">AHV<span class="role">1. Säule · staatlich, lebenslang garantiert</span></span>
+          <span class="amt">1'560<small>/Mt.</small></span>
+        </div>
+        <p class="what">Die staatliche Grundsicherung. Ihre Höhe hängt von deinen Beitragsjahren und deinem Durchschnittseinkommen ab.</p>
+        <div class="calc" style="border-color:var(--ahv);">Du hast <b>29 von 44</b> möglichen Beitragsjahren (Zuzug mit 36) &rarr; gekürzte <b>Teilrente</b> statt der vollen CHF 2'520.</div>
+      </div>
+
+      <div class="pil">
+        <div class="head">
+          <span class="dot" style="background:var(--pk);"></span>
+          <span class="name">Pensionskasse<span class="role">2. Säule · lebenslang garantiert</span></span>
+          <span class="amt">2'270<small>/Mt.</small></span>
+        </div>
+        <p class="what">Dein über das Erwerbsleben angespartes Kapital, das bei der Pensionierung in eine feste Rente umgewandelt wird.</p>
+        <div class="calc" style="border-color:var(--pk);"><b>CHF 470'000</b> Guthaben &times; <b>5,8%</b> Umwandlungssatz &divide; 12 = <b>CHF 2'270</b>/Mt.</div>
+      </div>
+
+      <div class="pil">
+        <div class="head">
+          <span class="dot" style="background:var(--s3a);"></span>
+          <span class="name">Säule 3a<span class="role">3. Säule · privat, ein Topf der leer wird</span></span>
+          <span class="amt">580<small>/Mt.</small></span>
+        </div>
+        <p class="what">Deine private Vorsorge – ein Kapital, keine garantierte Rente. Es gibt keinen festen Umrechnungssatz; die Monatszahl hängt davon ab, über wie lange du es beziehst.</p>
+        <div class="calc" style="border-color:var(--s3a);"><b>CHF 174'000</b> Kapital &divide; 300 Monate (gleichmässiger Bezug bis Alter 90) = <b>CHF 580</b>/Mt.</div>
+      </div>
+
+      <div class="pil">
+        <div class="head">
+          <span class="dot" style="background:var(--foreign);"></span>
+          <span class="name">Deutsche Rente<span class="role">Ausland · separat, mit Unsicherheit</span></span>
+          <span class="amt">610<small>/Mt.</small></span>
+        </div>
+        <p class="what">Aus deinen 11 Jahren in Deutschland. Wird unabhängig von der Schweiz ausbezahlt, muss aber separat beantragt werden.</p>
+        <div class="calc" style="border-color:var(--foreign);"><b>Schätzung</b> auf Basis deiner deutschen Beitragsjahre – hier ist die grösste Unschärfe.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <h2>Dein Ziel und deine Lücke</h2>
+    <p class="sub">Als Faustregel brauchst du im Ruhestand rund 80% deines letzten Lohns, um den Lebensstandard zu halten.</p>
+    <div class="track">
+      <div class="fill" style="width:68.5%;"></div>
+      <div class="short" style="left:68.5%;width:31.5%;"></div>
+      <div class="tick" style="left:100%;"><b>Ziel · 7'330</b></div>
+    </div>
+    <div class="gaplabels">
+      <div>Du hast<b>CHF 5'020</b></div>
+      <div>Dein Ziel (80%)<b>CHF 7'330</b></div>
+      <div class="neg">Monatliche Lücke<b>CHF 2'310</b></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Frühpensionierung</h2>
+    <p class="sub">Jedes Jahr früher kostet doppelt: weniger Kapital angespart und lebenslang gekürzte Renten. Und vor 63 gibt es noch gar keine AHV.</p>
+    <div class="seg" role="group" aria-label="Pensionierungsalter wählen">
+      <button data-age="61" aria-pressed="false">mit 61</button>
+      <button data-age="62" aria-pressed="false">mit 62</button>
+      <button data-age="63" aria-pressed="false">mit 63</button>
+      <button data-age="64" aria-pressed="false">mit 64</button>
+      <button data-age="65" aria-pressed="true">mit 65</button>
+    </div>
+    <div class="result">
+      <div class="big" id="scen-big"><span class="cur">CHF</span>5'020</div>
+      <div class="meta">brutto/Mt. · netto ~ CHF <span id="scen-net">4'520</span><br>Lücke <span class="glabel" id="scen-gap">CHF 2'310</span></div>
+    </div>
+    <p class="note" id="scen-note">Ordentliches Rentenalter – volle AHV-Teilrente, keine Kürzung.</p>
+  </section>
+
+  <section style="border-bottom:none;">
+    <h2>Was du bewegen kannst</h2>
+    <p class="sub">Drei Hebel, die in deiner Situation wirklich etwas ausmachen – vom grössten Effekt zum kleinsten.</p>
+
+    <div class="lever">
+      <h3>Säule 3a künftig ausschöpfen</h3>
+      <p>Der Maximalbetrag mit Pensionskasse liegt 2026 bei CHF 7'258 im Jahr – voll vom steuerbaren Einkommen abziehbar.</p>
+      <p class="mine">Du zahlst aktuell rund CHF 4'000 ein. Die Differenz kostet dich jedes Jahr Steuerersparnis und Alterskapital. Lücken ab 2025 kannst du neuerdings rückwirkend nachzahlen – frühere jedoch nicht.</p>
+    </div>
+
+    <div class="lever">
+      <h3>AHV-Jahre prüfen lassen</h3>
+      <p>Jedes fehlende Beitragsjahr kürzt die Rente lebenslang um rund 2,3%. Nachzahlen lässt sich nur für die letzten fünf Jahre.</p>
+      <p class="mine">Bestell deinen kostenlosen AHV-Kontoauszug und prüfe, ob seit deinem Zuzug 2016 jedes Jahr lückenlos verbucht ist. Genau da entstehen die teuersten, unbemerkten Löcher.</p>
+    </div>
+
+    <div class="lever">
+      <h3>Deutsche Rente rechtzeitig beantragen</h3>
+      <p>Schweiz und Deutschland zahlen getrennt aus – deine deutschen Jahre werden nicht angerechnet, müssen aber separat beantragt werden.</p>
+      <p class="mine">Deine 11 Jahre in Deutschland ergeben einen eigenen Rentenanspruch. Ihn nicht abzurufen wäre bares Geld verschenkt.</p>
+    </div>
+  </section>
+
+  <footer>
+    <strong>Beispieldaten.</strong> Dieser Musterbericht zeigt das Layout mit einer fiktiven Person. Alle Beträge sind Schätzungen auf Basis der Werte 2026 und ersetzen keine Finanz- oder Steuerberatung. Die 3a- und Kapitalbeträge unterstellen einen gleichmässigen Bezug bis Alter 90 ohne Rendite.
+  </footer>
+
+</div>
+</div>
+
+<script>
+  const scen={
+    61:{brutto:"2'930",net:"2'690",gap:"CHF 4'400",note:"AHV gibt es frühestens ab 63 – diese zwei Jahre musst du vollständig aus Kapital überbrücken. Das ist der grösste Posten einer so frühen Pensionierung."},
+    62:{brutto:"3'050",net:"2'800",gap:"CHF 4'280",note:"AHV gibt es frühestens ab 63 – dieses Jahr überbrückst du noch aus eigenem Kapital."},
+    63:{brutto:"4'430",net:"4'010",gap:"CHF 2'900",note:"Frühester AHV-Bezug möglich, aber mit rund 13,6% Kürzung – lebenslang."},
+    64:{brutto:"4'665",net:"4'210",gap:"CHF 2'665",note:"AHV mit rund 6,8% Kürzung – lebenslang."},
+    65:{brutto:"5'020",net:"4'520",gap:"CHF 2'310",note:"Ordentliches Rentenalter – volle AHV-Teilrente, keine Kürzung."}
+  };
+  const $=id=>document.getElementById(id);
+  function render(age){
+    const d=scen[age];
+    const big=$('scen-big');
+    big.style.opacity=0;
+    setTimeout(()=>{ big.innerHTML='<span class="cur">CHF</span>'+d.brutto; big.style.opacity=1; },120);
+    $('scen-net').textContent=d.net;
+    $('scen-gap').textContent=d.gap;
+    $('scen-note').textContent=d.note;
+  }
+  document.querySelectorAll('.seg button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.seg button').forEach(b=>b.setAttribute('aria-pressed','false'));
+      btn.setAttribute('aria-pressed','true');
+      render(btn.dataset.age);
+    });
+  });
+</script>
+</body>
+</html>
