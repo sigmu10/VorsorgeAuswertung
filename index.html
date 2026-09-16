@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deine Vorsorge — Wie viel bleibt dir im Alter?</title>
+<title>Deine Vorsorge — Die Schweizer Vorsorge verstehen und die eigene Rente berechnen</title>
 <meta name="description" content="AHV, Pensionskasse und Säule 3a zu einer Monatszahl zusammengerechnet — erklärt, mit Szenarien. In 20 Minuten. Unabhängig, CHF 49 einmalig, 14 Tage Geld zurück.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
@@ -48,8 +48,8 @@
 
   /* Hero */
   .hero{padding:80px 0 72px;background:var(--bg);}
-  .hero h1{font-size:clamp(38px,5.6vw,60px);letter-spacing:-1px;margin-bottom:18px;}
-  .hero .lead{font-size:19px;margin-bottom:28px;}
+  .hero h1{font-size:clamp(27px,3.7vw,40px);letter-spacing:-.6px;margin-bottom:16px;}
+  .hero .lead{font-size:17.5px;margin-bottom:28px;}
 
   /* Handy-Rahmen mit Produktansicht */
   .phone{width:min(340px,100%);margin:0 auto;background:var(--ink);border-radius:36px;padding:12px;box-shadow:0 30px 60px rgba(35,32,27,.22),0 4px 12px rgba(35,32,27,.12);}
@@ -126,9 +126,13 @@
   .code-hint{font-size:14.5px;color:var(--soft);margin:16px 0 0;}
 
   /* Über */
-  .who{display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:start;max-width:820px;margin:0 auto;}
-  .who .photo{width:140px;height:140px;border-radius:20px;background:var(--line2);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--soft);}
-  @media(max-width:560px){.who{grid-template-columns:1fr;}}
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:900px;margin:0 auto;}
+  .member{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:start;}
+  .member .photo{width:110px;height:110px;border-radius:18px;background:var(--line2);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--soft);}
+  .member h3{font-size:20px;margin-bottom:6px;}
+  .member p{font-size:16px;color:var(--soft);margin:0;}
+  @media(max-width:760px){.team{grid-template-columns:1fr;gap:28px;}}
+  @media(max-width:420px){.member{grid-template-columns:1fr;}}
 
   /* FAQ */
   .faq{max-width:760px;margin:0 auto;}
@@ -161,7 +165,7 @@
       <a href="#fuer-wen">Für wen</a>
       <a href="#so">So funktioniert's</a>
       <a href="#faq">Fragen</a>
-      <a href="#ueber">Über mich</a>
+      <a href="#ueber">Über uns</a>
       <a class="cta sm" href="#kauf">Zugang kaufen</a>
     </nav>
   </div>
@@ -171,8 +175,8 @@
 <section class="hero">
   <div class="wrap two">
     <div>
-      <h1>Wie viel bleibt dir im Alter?</h1>
-      <p class="lead">AHV, Pensionskasse und Säule 3a zu einer Monatszahl zusammengerechnet — erklärt, eingeordnet, mit Szenarien zum Durchspielen. In 20 Minuten, mit deinen eigenen Zahlen.</p>
+      <h1>Die Schweizer Vorsorge verstehen und die eigene Rente berechnen</h1>
+      <p class="lead">Die Altersvorsorge in der Schweiz steht auf drei Säulen: AHV, Pensionskasse und private Vorsorge. Im Tool gehst du sie Schritt für Schritt durch, lernst ihre Eigenheiten kennen und trägst deine eigenen Zahlen ein. Am Ende siehst du, wie viel dir nach der Pensionierung monatlich bleibt. Und du kannst Szenarien durchspielen, etwa eine Frühpensionierung, und siehst, wie sich das Ergebnis verändert.</p>
       <a class="cta" href="#kauf">Zugang kaufen — CHF 49</a>
       <span class="cta-sub">Einmalig. 14 Tage Geld zurück, ohne Fragen.</span>
     </div>
@@ -187,10 +191,10 @@
           <div class="amt"><span class="c">CHF</span>5'250</div>
           <div class="u">brutto pro Monat · nach Steuern rund CHF 4'620</div>
           <div class="pbar"><span style="width:31.6%;background:var(--ahv)"></span><span style="width:43.2%;background:var(--pk)"></span><span style="width:13.5%;background:var(--s3a)"></span><span style="width:11.7%;background:var(--foreign)"></span></div>
-          <div class="prow"><i style="background:var(--ahv)"></i><b>CHF 1'660</b><span>AHV — 1. Säule</span></div>
-          <div class="prow"><i style="background:var(--pk)"></i><b>CHF 2'270</b><span>Pensionskasse — 2. Säule</span></div>
-          <div class="prow"><i style="background:var(--s3a)"></i><b>CHF 710</b><span>Säule 3a — Kapitalbezug</span></div>
-          <div class="prow"><i style="background:var(--foreign)"></i><b>CHF 610</b><span>Ausländische Rente</span></div>
+          <div class="prow"><i style="background:var(--ahv)"></i><b>CHF 1'660</b><span>AHV</span></div>
+          <div class="prow"><i style="background:var(--pk)"></i><b>CHF 2'270</b><span>Pensionskasse</span></div>
+          <div class="prow"><i style="background:var(--s3a)"></i><b>CHF 710</b><span>Säule 3a</span></div>
+          <div class="prow"><i style="background:var(--foreign)"></i><b>CHF 610</b><span>Rente aus dem Ausland</span></div>
           <div class="pgoal">Ziel für den gewohnten Lebensstandard: 80% des Lohns<div class="gb"><span class="gf"></span><span class="gs"></span></div>Es fehlen dir monatlich <b>CHF 1'150</b> bis zum Ziel.</div>
         </div>
       </div>
@@ -203,23 +207,21 @@
   <div class="wrap">
     <div class="center">
       <p class="eyebrow">Für wen</p>
-      <h2 class="h2">Du zahlst jeden Monat ein. Was kommt am Ende dabei heraus?</h2>
-      <p class="lead" style="margin:0 auto;">Für alle, die in der Schweiz arbeiten und es wissen wollen — besonders, wenn du zugezogen bist und dir das System nie jemand erklärt hat, oder wenn du dich mit 30 oder 40 zum ersten Mal ernsthaft damit befasst.</p>
+      <h2 class="h2">Kannst du dir deinen Lebensstandard im Alter noch leisten?</h2>
+      <p class="lead" style="margin:0 auto;">Das Tool ist für alle, die Klarheit über ihre finanzielle Situation nach der Pensionierung haben wollen. Es ist geeignet für Zugezogene, für die das System neu ist, und genauso für alle, die sich zum ersten Mal ernsthaft mit ihrer Vorsorge befassen.</p>
     </div>
     <div class="vn">
       <div>
         <h3>Heute</h3>
-        <p>Drei Säulen, drei Auszüge, keine Gesamtzahl.</p>
-        <p>Das Gefühl «wahrscheinlich reicht es nicht» — ohne zu wissen, um wie viel.</p>
-        <p>Der Vorsorgeausweis liegt im Ordner, nie richtig gelesen.</p>
-        <p>Vielleicht noch eine Rente aus dem früheren Land, die niemand mitrechnet.</p>
+        <p>Du weisst nicht, wie deine finanzielle Situation im Alter aussieht.</p>
+        <p>Du verstehst das Vorsorgesystem nur ungefähr.</p>
+        <p>Du hast keine Vorstellung, was sich daran noch ändern lässt.</p>
       </div>
       <div class="after">
         <h3>Nach dem Rundgang</h3>
-        <p>Du kennst deine Monatszahl ab der Pensionierung.</p>
-        <p>Du weisst, ob sie für deinen Lebensstandard reicht — und wie gross die Lücke ist.</p>
-        <p>Du verstehst, wie jede Säule funktioniert und wo deine Zahlen herkommen.</p>
-        <p>Du hast gesehen, welche Hebel die Lücke schliessen und welche nicht.</p>
+        <p>Du kennst deine Rente nach der Pensionierung und weisst, wie sie sich zusammensetzt.</p>
+        <p>Du weisst, ob du deinen gewohnten Lebensstandard beibehalten kannst oder ob es eine Lücke gibt.</p>
+        <p>Du hast gesehen, mit welchen Methoden du diese Lücke schliessen kannst.</p>
       </div>
     </div>
   </div>
@@ -235,8 +237,8 @@
     <div class="two">
       <div>
         <h3 style="font-size:26px;margin-bottom:12px;">1 · Die drei Säulen, der Reihe nach</h3>
-        <p>Zu jeder Säule das Wesentliche in wenigen Absätzen: wie sie funktioniert, wovon deine Rente abhängt, und wo du deine Zahl findest. Dann trägst du sie ein — aus der AHV-Vorausberechnung, dem Vorsorgeausweis, dem 3a-Konto. Hast du sie noch nicht, gibt ein Schätzer einen Startwert.</p>
-        <p>Nach jeder Säule ein Zwischenergebnis: was die Zahl bedeutet, wie verlässlich sie ist, wo du Spielraum hast.</p>
+        <p>Zu jeder Säule erfährst du in wenigen Absätzen, wie sie funktioniert, wovon deine Rente abhängt und wo du deine eigene Zahl findest. Diese Zahl trägst du dann ein, zum Beispiel aus der Rentenvorausberechnung der AHV oder aus dem Vorsorgeausweis deiner Pensionskasse. Wenn du sie noch nicht hast, liefert dir ein Schätzer einen Startwert.</p>
+        <p>Nach jeder Säule siehst du ein Zwischenergebnis. Es zeigt dir, was die Zahl bedeutet, wie verlässlich sie ist und wie viel Spielraum du bei dieser Säule hast.</p>
       </div>
       <div class="phone" aria-label="Ansicht: Zwischenergebnis AHV">
         <div class="screen">
@@ -263,8 +265,8 @@
   <div class="wrap two rev">
     <div>
       <h3 style="font-size:26px;margin-bottom:12px;">2 · Dein Einkommen im Alter</h3>
-      <p>Eine Monatszahl, brutto und netto, aufgeteilt nach Quellen. Daneben das, was dein heutiger Lebensstandard braucht — und die Lücke dazwischen, in Franken, eingeordnet: klein, spürbar oder deutlich.</p>
-      <p>Keine Bandbreiten, keine Tabellen. Eine Zahl, die du dir merken kannst.</p>
+      <p>Am Ende siehst du, wie viel dir nach der Pensionierung monatlich bleibt, brutto und netto, und aus welchen Quellen sich der Betrag zusammensetzt. Daneben steht, was du für deinen heutigen Lebensstandard brauchen wirst. Die Differenz ist deine Lücke, in Franken ausgewiesen und eingeordnet, ob sie klein, spürbar oder deutlich ist.</p>
+      <p>Es gibt keine Bandbreiten und keine Tabellen, sondern eine Zahl, die du dir merken kannst.</p>
     </div>
     <div class="phone" aria-label="Ansicht: Zielvergleich">
       <div class="screen">
@@ -288,8 +290,8 @@
   <div class="wrap two">
     <div>
       <h3 style="font-size:26px;margin-bottom:12px;">3 · Sechs Szenarien zum Durchspielen</h3>
-      <p>Frühpensionierung, AHV nachzahlen, Einkauf in die Pensionskasse, 3a-Beitrag, Anlagestrategie, weiteres Vermögen. Du veränderst eine Stellschraube und siehst sofort, was sich bewegt — und was nicht.</p>
-      <p>So merkst du, wo dein Spielraum wirklich liegt: wenig bei der AHV, etwas bei der Pensionskasse, viel bei der Säule 3a.</p>
+      <p>Zum Schluss kannst du an sechs Stellschrauben drehen: Frühpensionierung, fehlende AHV-Jahre nachzahlen, ein Einkauf in die Pensionskasse, dein jährlicher Beitrag in die Säule 3a, deine Anlagestrategie und dein übriges Vermögen. Du veränderst eine davon und siehst sofort, wie sich dein Ergebnis bewegt.</p>
+      <p>So erkennst du, wo dein Spielraum wirklich liegt. Bei der AHV ist er klein, bei der Pensionskasse etwas grösser, und bei der Säule 3a hast du am meisten in der Hand.</p>
     </div>
     <div class="phone" aria-label="Ansicht: Szenarien">
       <div class="screen">
@@ -316,7 +318,6 @@
 <section>
   <div class="wrap">
     <div class="center">
-      <p class="eyebrow">Warum Deine Vorsorge</p>
       <h2 class="h2">Alles zusammen, verständlich, ohne Hintergedanken</h2>
     </div>
     <div class="three">
@@ -344,17 +345,17 @@
   <div class="wrap">
     <div class="center" style="margin-bottom:28px;">
       <p class="eyebrow">Preis</p>
-      <h2 class="h2">Einmal zahlen, ein Jahr nutzen</h2>
+      <h2 class="h2">Was es kostet</h2>
     </div>
     <div class="price">
-      <div class="amt">CHF 49<small>einmalig</small></div>
+      <div class="amt">CHF 49</div>
       <ul>
-        <li>Zugang für 12 Monate, so oft du willst</li>
-        <li>Kein Konto, keine Anmeldung — deine Zahlen bleiben bei dir</li>
-        <li>14 Tage Geld-zurück-Garantie, bedingungslos: eine kurze Mail genügt</li>
+        <li>Einmalige Zahlung, unbegrenzter Zugang</li>
+        <li>Deine Zahlen bleiben bei dir: kein Konto, keine Anmeldung, nichts wird gespeichert</li>
+        <li>14 Tage Geld-zurück-Garantie, wenn es nicht das Richtige für dich ist</li>
       </ul>
       <a class="cta" href="#ZAHLUNGSLINK">Zugang kaufen</a>
-      <p class="code-hint">Mit Empfehlungscode zahlst du CHF 39 — gib ihn beim Bezahlen ein.</p>
+      <p class="code-hint">Hast du einen Empfehlungscode? Du kannst ihn beim Bezahlen eingeben.</p>
       <p style="margin-top:12px;"><span class="todo">Link des Zahlungsanbieters einsetzen</span></p>
     </div>
   </div>
@@ -363,13 +364,24 @@
 <!-- ÜBER -->
 <section id="ueber">
   <div class="wrap">
-    <div class="who">
-      <div class="photo">Foto</div>
-      <div>
-        <p class="eyebrow">Über mich</p>
-        <h2 class="h2" style="font-size:28px;">Wer dahintersteht</h2>
-        <p>Ich bin Simon, Ökonom und Lehrer für Wirtschaft und Recht an einem Schweizer Gymnasium. Das Vorsorgesystem erkläre ich seit Jahren im Unterricht — und habe kein Werkzeug gefunden, das die drei Säulen für eine Person zusammenrechnet. Also habe ich es gebaut.</p>
-        <p><span class="todo">Offen: Bruder (Pensionskassen-Experte, hat die Rechenlogik geprüft) mit einem Satz nennen? Foto?</span></p>
+    <div class="center" style="margin-bottom:32px;">
+      <p class="eyebrow">Über uns</p>
+      <h2 class="h2">Das Team</h2>
+    </div>
+    <div class="team">
+      <div class="member">
+        <div class="photo">Foto</div>
+        <div>
+          <h3>Simon Gmür</h3>
+          <p>Ich bin Ökonom und Lehrer für Wirtschaft und Recht an einem Schweizer Gymnasium. Wissen verständlich zu vermitteln ist mein Beruf. Von mir stammen die Erklärungen und der Aufbau des Tools.</p>
+        </div>
+      </div>
+      <div class="member">
+        <div class="photo">Foto</div>
+        <div>
+          <h3>David Gmür</h3>
+          <p>Ich bin Ökonom, arbeite bei einem Beratungsunternehmen für Pensionskassen und bilde mich zum Pensionskassen-Experten weiter. Von mir stammt die Rechenlogik hinter den Zahlen.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -388,7 +400,27 @@
       <details><summary>Ich bin zugezogen und habe im Ausland gearbeitet. Geht das?</summary><p>Ja, dafür ist das Tool gemacht. Du erfährst, warum deine AHV-Rente tiefer ausfällt, ob sich fehlende Jahre nachzahlen lassen — und kannst deine Rente aus dem früheren Land mitrechnen.</p></details>
       <details><summary>Ich bin verheiratet. Rechnet das Tool für Paare?</summary><p>Das Tool rechnet für eine Person. Für Paare gelten bei der AHV besondere Regeln (Splitting, Plafonierung), die bewusst nicht abgebildet sind. Ihr könnt den Rundgang beide einzeln machen und die Zahlen zusammenzählen.</p></details>
       <details><summary>Ist das eine Finanzberatung?</summary><p>Nein. Deine Vorsorge informiert und hilft dir beim Planen — es empfiehlt keine Produkte und ersetzt keine Beratung. Für konkrete Entscheide wende dich an deine Ausgleichskasse, deine Pensionskasse oder eine unabhängige Beratung.</p></details>
-      <details><summary>Wie funktioniert die Geld-zurück-Garantie?</summary><p>Bringt dir das Tool nichts, schreibst du innert 14 Tagen eine kurze Mail. Du bekommst den vollen Betrag zurück, ohne Begründung.</p></details>
+      <details><summary>Wie funktioniert die Geld-zurück-Garantie?</summary><p>Bringt dir das Tool nichts, schreibst du innert 14 Tagen nach dem Kauf eine kurze Mail an <a href="mailto:simon.gmuer@gmail.com">simon.gmuer@gmail.com</a>. Du bekommst den vollen Betrag zurück, ohne Begründung.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- RECHTLICHES -->
+<section id="rechtliches" style="padding:56px 0 40px;">
+  <div class="wrap">
+    <div class="faq" style="max-width:820px;">
+      <details id="impressum"><summary>Impressum</summary>
+        <p><b>Verantwortlich für diese Webseite und das Angebot «Deine Vorsorge»</b><br>Simon Gmür<br><span class="todo">Strasse, PLZ Ort</span><br>E-Mail: <a href="mailto:simon.gmuer@gmail.com">simon.gmuer@gmail.com</a></p>
+        <p>Deine Vorsorge ist ein privates Angebot. Es besteht keine Aufsicht durch die FINMA und keine Zugehörigkeit zu einer Bank, Versicherung oder Vorsorgeeinrichtung.</p>
+      </details>
+      <details id="datenschutz"><summary>Datenschutzerklärung</summary>
+        <p><b>Grundsatz.</b> Wir erheben so wenig Daten wie möglich. Die Eingaben im Tool (Alter, Lohn, Renten, Vermögen) werden ausschliesslich in deinem Browser verarbeitet und nicht an uns oder Dritte übermittelt. Es werden keine Cookies gesetzt und keine Analyse- oder Werbedienste eingesetzt.</p>
+        <p><b>Kauf.</b> Die Zahlung wird über <span class="todo">Name des Zahlungsanbieters</span> abgewickelt. Dabei werden die für die Zahlung nötigen Daten (Name, E-Mail-Adresse, Zahlungsangaben) vom Anbieter nach dessen Datenschutzbestimmungen verarbeitet. Wir erhalten deinen Namen, deine E-Mail-Adresse und die Bestätigung des Kaufs, um dir den Zugang zu senden und die Geld-zurück-Garantie abzuwickeln. Diese Daten bewahren wir so lange auf, wie es für die Abwicklung und die gesetzliche Aufbewahrungspflicht nötig ist.</p>
+        <p><b>Hosting.</b> Beim Aufruf der Webseite verarbeitet der Hosting-Anbieter <span class="todo">Name, Sitz</span> technisch bedingt deine IP-Adresse und Angaben zum Browser in Server-Protokollen. <span class="todo">Schriften: entweder selbst hosten oder Google Fonts hier nennen (Übermittlung der IP-Adresse an Google, USA).</span></p>
+        <p><b>Kontakt.</b> Wenn du uns eine E-Mail schreibst, verwenden wir deine Angaben nur zur Beantwortung deiner Anfrage.</p>
+        <p><b>Deine Rechte.</b> Du kannst jederzeit Auskunft über die zu deiner Person gespeicherten Daten verlangen und deren Berichtigung oder Löschung beantragen. Wende dich dazu an <a href="mailto:simon.gmuer@gmail.com">simon.gmuer@gmail.com</a>.</p>
+        <p>Grundlage ist das Schweizer Datenschutzgesetz (DSG). Stand: <span class="todo">Datum</span>.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -406,7 +438,7 @@
       </div>
       <div>
         <h4>Rechtliches</h4>
-        <ul><li><a href="#impressum">Impressum</a></li><li><a href="#datenschutz">Datenschutzerklärung</a></li><li><a href="mailto:hallo@deine-vorsorge.ch">Kontakt</a></li></ul>
+        <ul><li><a href="#impressum">Impressum</a></li><li><a href="#datenschutz">Datenschutzerklärung</a></li><li><a href="mailto:simon.gmuer@gmail.com">Kontakt</a></li></ul>
       </div>
     </div>
     <div class="bottom"><span>© 2026 Deine Vorsorge</span><span>Made in Switzerland</span></div>
