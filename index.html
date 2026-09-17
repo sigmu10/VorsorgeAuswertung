@@ -75,7 +75,9 @@
   .pbox .l{font-size:11.5px;color:var(--ink);}
   .pbox .amt{font-family:var(--serif);font-size:42px;font-weight:600;line-height:1;letter-spacing:-1.2px;color:var(--ahv);font-variant-numeric:tabular-nums;margin:2px 0;}
   .pbox .amt .c{font-size:.36em;vertical-align:.42em;margin-right:.1em;font-family:var(--sans);letter-spacing:0;}
-  .pbox .u{font-size:11.5px;}
+  .pbox .u{font-size:12px;}
+  .pbox .u b{font-weight:600;font-variant-numeric:tabular-nums;}
+  .pbox .amt .sfx{font-family:var(--sans);font-size:.3em;font-weight:400;letter-spacing:0;color:var(--ink);margin-left:.35em;vertical-align:.15em;}
   .pbar{display:flex;height:16px;border-radius:5px;overflow:hidden;background:var(--line);margin:12px 0 10px;}
   .pbar span{display:block;height:100%;}
   .prow{display:grid;grid-template-columns:9px 62px 1fr;gap:7px;align-items:baseline;font-size:11.5px;margin-top:5px;}
@@ -93,6 +95,8 @@
   .zw p{font-size:11.5px;margin:8px 0 0;line-height:1.5;}
   .zw p b{font-weight:600;}
   .ptext{font-size:11.5px;margin:0 0 10px;line-height:1.5;}
+  .pgfx{display:block;width:100%;margin:2px 0 12px;}
+  .gcap{font-family:var(--sans);font-size:12px;fill:var(--soft);}
   .card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;margin-top:7px;}
   .card b{font-weight:600;}
   .card .arr{color:var(--faint);}
@@ -189,7 +193,7 @@
       <h1>Die Schweizer Vorsorge verstehen und die eigene Rente berechnen</h1>
     </div>
     <div class="hero-text">
-      <p class="lead">Die Altersvorsorge in der Schweiz steht auf drei Säulen: AHV, Pensionskasse und private Vorsorge. Im Tool gehst du sie Schritt für Schritt durch, lernst ihre Eigenheiten kennen und trägst deine eigenen Zahlen ein. Am Ende siehst du, wie viel dir nach der Pensionierung monatlich bleibt. Und du kannst Szenarien durchspielen, etwa eine Frühpensionierung, und siehst, wie sich das Ergebnis verändert.</p>
+      <p class="lead">Die Altersvorsorge in der Schweiz steht auf drei Säulen: AHV, Pensionskasse und private Vorsorge. Im Tool gehst du sie Schritt für Schritt durch, lernst ihre Funktionsweise kennen und trägst deine eigenen Zahlen ein. Am Ende siehst du, wie viel dir nach der Pensionierung monatlich bleibt. Und du kannst Szenarien durchspielen, etwa eine Frühpensionierung, und siehst, wie sich das Ergebnis verändert.</p>
       <a class="cta" href="#kauf">Das Tool erhalten</a>
     </div>
     <div class="hero-phone"><div class="phone" aria-label="Ansicht: Dein Einkommen im Alter">
@@ -199,15 +203,15 @@
         <div class="pprog"><span style="background:var(--ink)"></span><span style="background:var(--ahv)"></span><span style="background:var(--pk)"></span><span style="background:var(--s3a)"></span><span style="background:var(--ink);box-shadow:0 0 0 1.5px var(--bg),0 0 0 2.5px var(--ink)"></span><span></span></div>
         <div class="plbl">Schritt <b>5</b> von 6 · <b>Dein Ergebnis</b></div>
         <div class="pbox">
-          <div class="l">Voraussichtlich verfügbar ab der Pensionierung mit 65</div>
-          <div class="amt"><span class="c">CHF</span>5'250</div>
-          <div class="u">brutto pro Monat · nach Steuern rund CHF 4'620</div>
+          <div class="l">Verfügbar nach der Pensionierung</div>
+          <div class="amt"><span class="c">CHF</span>5'250<span class="sfx">brutto</span></div>
+          <div class="u"><b>CHF 4'620</b> netto, nach Steuern</div>
           <div class="pbar"><span style="width:31.6%;background:var(--ahv)"></span><span style="width:43.2%;background:var(--pk)"></span><span style="width:13.5%;background:var(--s3a)"></span><span style="width:11.7%;background:var(--foreign)"></span></div>
           <div class="prow"><i style="background:var(--ahv)"></i><b>CHF 1'660</b><span>AHV</span></div>
           <div class="prow"><i style="background:var(--pk)"></i><b>CHF 2'270</b><span>Pensionskasse</span></div>
           <div class="prow"><i style="background:var(--s3a)"></i><b>CHF 710</b><span>Säule 3a</span></div>
-          <div class="prow"><i style="background:var(--foreign)"></i><b>CHF 610</b><span>Rente aus dem Ausland</span></div>
-          <div class="pgoal">Ziel für den gewohnten Lebensstandard: 80% des Lohns<div class="gb"><span class="gf"></span><span class="gs"></span></div>Es fehlen dir monatlich <b>CHF 1'150</b> bis zum Ziel.</div>
+          <div class="prow"><i style="background:var(--foreign)"></i><b>CHF 610</b><span>Ausländische Rente</span></div>
+          <div class="pgoal">Voraussichtlich verfügbar · Ziel 80% des Lohns<div class="gb"><span class="gf"></span><span class="gs"></span></div>Es fehlen dir monatlich <b>CHF 1'150</b> bis zum Ziel.</div>
         </div>
       </div>
     </div></div>
@@ -249,22 +253,31 @@
     <div class="two">
       <div>
         <h3 style="font-size:26px;margin-bottom:12px;">1 · Die drei Säulen, der Reihe nach</h3>
-        <p>Zu jeder Säule erfährst du in wenigen Absätzen, wie sie funktioniert, wovon deine Rente abhängt und wo du deine eigene Zahl findest. Diese Zahl trägst du dann ein, zum Beispiel aus der Rentenvorausberechnung der AHV oder aus dem Vorsorgeausweis deiner Pensionskasse. Wenn du sie noch nicht hast, liefert dir ein Schätzer einen Startwert.</p>
-        <p>Nach jeder Säule siehst du ein Zwischenergebnis. Es zeigt dir, was die Zahl bedeutet, wie verlässlich sie ist und wie viel Spielraum du bei dieser Säule hast.</p>
+        <p>Zu jeder Säule erfährst du in wenigen Absätzen, wie sie funktioniert, wovon deine Rente abhängt und wo du deine eigene Zahl findest. Wenn du sie noch nicht hast, liefert dir ein Schätzer einen Startwert.</p>
+        <p>Nach jeder Säule siehst du ein Zwischenergebnis. Es zeigt dir, was die Zahl bedeutet und wie viel Spielraum du bei dieser Säule hast.</p>
       </div>
-      <div class="phone" aria-label="Ansicht: Zwischenergebnis AHV">
+      <div class="phone" aria-label="Ansicht: Zwischenergebnis Pensionskasse">
         <div class="screen">
           <div class="notch"></div>
           <div class="pmast">Deine Vorsorge</div>
-          <div class="pprog"><span style="background:var(--ink)"></span><span style="background:var(--ahv);box-shadow:0 0 0 1.5px var(--bg),0 0 0 2.5px var(--ahv)"></span><span></span><span></span><span></span><span></span></div>
-          <div class="plbl">Schritt <b>2</b> von 6 · <b>AHV</b></div>
-          <p class="ptext">Wie hoch deine AHV-Rente ausfällt, hängt von zwei Dingen ab: von der Zahl deiner <b>Beitragsjahre</b> und von deinem <b>durchschnittlichen Einkommen</b>. Die Maximalrente gibt es ab rund CHF 90'000 Jahreseinkommen — und nur nach 44 Jahren ohne Lücke.</p>
-          <div class="zw" style="--c:var(--ahv)">
-            <div class="l">Aus der 1. Säule</div>
-            <div class="amt"><span class="c">CHF</span>1'660<span class="u">pro Monat, lebenslang ab 65</span></div>
-            <p>Das ist eine <b>Teilrente</b> — ein Zeichen fehlender Beitragsjahre, häufig bei späterem Zuzug.</p>
-            <p>Dazu kommt deine ausländische Rente von <b>CHF 610</b> — sie gleicht einen Teil davon aus.</p>
-            <p>Auf diese Zahl kannst du dich verlassen: Sie ist gesetzlich festgelegt.</p>
+          <div class="pprog"><span style="background:var(--ink)"></span><span style="background:var(--ahv)"></span><span style="background:var(--pk);box-shadow:0 0 0 1.5px var(--bg),0 0 0 2.5px var(--pk)"></span><span></span><span></span><span></span></div>
+          <div class="plbl">Schritt <b>3</b> von 6 · <b>Pensionskasse</b></div>
+          <svg class="pgfx" viewBox="0 0 440 140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Kapitaldeckungsverfahren">
+            <defs><marker id="lpkarr" markerWidth="8" markerHeight="8" refX="5.5" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 Z" fill="var(--ink)"/></marker></defs>
+            <path d="M44 108 Q 160 100 230 62 T 330 22 L330 108 Z" fill="var(--pk)" opacity="0.9"/>
+            <line x1="44" y1="108" x2="336" y2="108" stroke="var(--line2)" stroke-width="2"/>
+            <text x="44" y="126" class="gcap">Erwerbsleben</text>
+            <text x="330" y="126" text-anchor="end" class="gcap">mit 65</text>
+            <text x="46" y="24" class="gcap" fill="var(--ink)" font-weight="600">dein Kapital wächst über die Jahre</text>
+            <path d="M340 60 L378 60" stroke="var(--ink)" stroke-width="2" marker-end="url(#lpkarr)"/>
+            <circle cx="405" cy="60" r="15" fill="var(--s3a)"/>
+            <text x="405" y="65" text-anchor="middle" font-size="13" font-weight="600" fill="#fff">CHF</text>
+            <text x="405" y="92" text-anchor="middle" class="gcap">Rente</text>
+          </svg>
+          <div class="zw" style="--c:var(--pk)">
+            <div class="l">Aus der Pensionskasse</div>
+            <div class="amt"><span class="c">CHF</span>2'270<span class="u">pro Monat, lebenslang ab 65</span></div>
+            <p>AHV und Pensionskasse ergeben zusammen rund <b>49%</b> deines Lohnes. Das ist noch unter dem Ziel von 60%. Bei späterem Zuzug in die Schweiz ist das häufig so. Ein Einkauf in die Pensionskasse kann einen Teil auffangen, und die 3. Säule den Rest. In den Szenarien siehst du, wie viel.</p>
           </div>
         </div>
       </div>
@@ -290,7 +303,7 @@
           <div class="l">Für einen gleichbleibenden Lebensstandard brauchst du im Alter rund 80% deines Bruttolohns:</div>
           <div class="pgoal" style="margin-top:10px;">Voraussichtlich verfügbar<div class="gb"><span class="gf"></span><span class="gs"></span></div><b>CHF 5'250</b></div>
           <div class="pgoal">Ziel · 80% des Lohns<div class="gb"><span style="height:100%;width:100%;background:var(--ahv);opacity:.26"></span></div><b>CHF 6'400</b></div>
-          <p class="ptext" style="margin:14px 0 0;">Es fehlen dir monatlich <b>CHF 1'150</b> bis zum Ziel. Das sind etwa 18% deines Ziels — eine spürbare Lücke. Einen Teil davon kannst du beeinflussen; im nächsten Schritt siehst du, wie viel.</p>
+          <p class="ptext" style="margin:14px 0 0;">Es fehlen dir monatlich <b>CHF 1'150</b> bis zum Ziel. Das sind etwa 18% deines Ziels, also eine spürbare Lücke. Einen Teil davon kannst du beeinflussen. Im nächsten Schritt siehst du, wie viel.</p>
         </div>
       </div>
     </div>
@@ -302,7 +315,7 @@
   <div class="wrap two">
     <div>
       <h3 style="font-size:26px;margin-bottom:12px;">3 · Sechs Szenarien zum Durchspielen</h3>
-      <p>Zum Schluss kannst du an sechs Stellschrauben drehen: Frühpensionierung, fehlende AHV-Jahre nachzahlen, ein Einkauf in die Pensionskasse, dein jährlicher Beitrag in die Säule 3a, deine Anlagestrategie und dein übriges Vermögen. Du veränderst eine davon und siehst sofort, wie sich dein Ergebnis bewegt.</p>
+      <p>Zum Schluss kannst du an sechs Stellschrauben drehen: Frühpensionierung, fehlende AHV-Jahre nachzahlen, ein Einkauf in die Pensionskasse, dein jährlicher Beitrag in die Säule 3a, deine Anlagestrategie und dein übriges Vermögen. Du kannst Änderungen vornehmen und siehst sofort, wie sich dein Ergebnis bewegt.</p>
       <p>So erkennst du, wo dein Spielraum wirklich liegt. Bei der AHV ist er klein, bei der Pensionskasse etwas grösser, und bei der Säule 3a hast du am meisten in der Hand.</p>
     </div>
     <div class="phone" aria-label="Ansicht: Szenarien">
@@ -313,14 +326,14 @@
         <div class="plbl">Schritt <b>6</b> von 6 · <b>Szenarien</b></div>
         <div class="pbox">
           <div class="sc-lead">Ausgangslage <b>CHF 5'250</b> <span class="sc-arrow">→</span></div>
-          <div class="amt"><span class="c">CHF</span>5'860</div>
+          <div class="amt"><span class="c">CHF</span>5'790</div>
           <div class="u">brutto pro Monat</div>
-          <p class="ptext" style="margin:10px 0 0;">Mit deinen Anpassungen — <b>PK-Einkauf von CHF 50'000, 3a-Beitrag CHF 7'258/Jahr</b> — kommst du auf <b>CHF 5'860</b>, rund <b>CHF 610 mehr</b> als in deiner Ausgangslage.</p>
+          <p class="ptext" style="margin:10px 0 0;">Mit deinen Anpassungen (<b>PK-Einkauf von CHF 50'000, 3a-Beitrag CHF 7'258/Jahr</b>) kommst du jetzt auf <b>CHF 5'790</b> pro Monat, rund <b>CHF 540 mehr</b> als in deiner Ausgangslage. Deine Lücke beträgt noch <b>CHF 610</b>.</p>
         </div>
         <div class="card"><b>Frühpensionierung</b><span>mit 65 <span class="arr">›</span></span></div>
-        <div class="card changed"><b>Pensionskasse — Einkauf</b><span><span class="tag">geändert</span>CHF 50'000 <span class="arr">›</span></span></div>
-        <div class="card changed"><b>Säule 3a — jährlicher Beitrag</b><span><span class="tag">geändert</span>CHF 7'258 <span class="arr">›</span></span></div>
-        <div class="card"><b>Säule 3a — Anlagestrategie</b><span>Ausgewogen <span class="arr">›</span></span></div>
+        <div class="card changed"><b>Pensionskasse: Einkauf</b><span><span class="tag">geändert</span>CHF 50'000 <span class="arr">›</span></span></div>
+        <div class="card changed"><b>Säule 3a: jährlicher Beitrag</b><span><span class="tag">geändert</span>CHF 7'258 <span class="arr">›</span></span></div>
+        <div class="card"><b>Säule 3a: Anlagestrategie</b><span>Ausgewogen <span class="arr">›</span></span></div>
       </div>
     </div>
   </div>
@@ -410,7 +423,7 @@
       <details><summary>Was brauche ich, um mitzumachen?</summary><p>Idealerweise drei Zahlen: deine AHV-Rente aus der Rentenvorausberechnung der Ausgleichskasse, die voraussichtliche Altersrente aus dem Vorsorgeausweis deiner Pensionskasse und den Stand deines 3a-Kontos. Das Tool zeigt dir, wo du sie findest. Hast du sie noch nicht, gibt dir ein Schätzer einen Startwert, den du später ersetzt.</p></details>
       <details><summary>Wie genau sind die Ergebnisse?</summary><p>AHV und Pensionskasse übernimmst du direkt aus den offiziellen Unterlagen — die sind verlässlich. Die Säule 3a hängt von der künftigen Rendite ab, deshalb ist sie eine Annahme. Das Tool sagt dir bei jeder Zahl, wie fest sie ist. Alle Beträge sind in heutigen Franken, damit du sie mit deinem heutigen Lohn vergleichen kannst.</p></details>
       <details><summary>Ich bin zugezogen und habe im Ausland gearbeitet. Geht das?</summary><p>Ja, dafür ist das Tool gemacht. Du erfährst, warum deine AHV-Rente tiefer ausfällt, ob sich fehlende Jahre nachzahlen lassen — und kannst deine Rente aus dem früheren Land mitrechnen.</p></details>
-      <details><summary>Ich bin verheiratet. Rechnet das Tool für Paare?</summary><p>Das Tool rechnet für eine Person. Für Paare gelten bei der AHV besondere Regeln (Splitting, Plafonierung), die bewusst nicht abgebildet sind. Ihr könnt den Rundgang beide einzeln machen und die Zahlen zusammenzählen.</p></details>
+      <details><summary>Ich bin verheiratet. Rechnet das Tool für Paare?</summary><p>Das Tool rechnet für eine Person. Macht den Rundgang beide einzeln und zählt die Ergebnisse zusammen. Seid ihr verheiratet, erhaltet ihr von der AHV zusammen höchstens CHF 3'780 pro Monat; liegt die Summe eurer beiden AHV-Renten darüber, rechnet mit diesem Betrag.</p></details>
       <details><summary>Ist das eine Finanzberatung?</summary><p>Nein. Deine Vorsorge informiert und hilft dir beim Planen — es empfiehlt keine Produkte und ersetzt keine Beratung. Für konkrete Entscheide wende dich an deine Ausgleichskasse, deine Pensionskasse oder eine unabhängige Beratung.</p></details>
       <details><summary>Wie funktioniert die Geld-zurück-Garantie?</summary><p>Bringt dir das Tool nichts, schreibst du innert 14 Tagen nach dem Kauf eine kurze Mail an <a href="mailto:simon.gmuer@gmail.com">simon.gmuer@gmail.com</a>. Du bekommst den vollen Betrag zurück, ohne Begründung.</p></details>
     </div>
