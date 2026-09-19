@@ -46,7 +46,7 @@
   .intro{font-size:15px;color:var(--ink);margin:0 0 16px;max-width:66ch;}
 
   input[type=number]{font-family:var(--sans);font-size:15px;color:var(--ink);border:1.5px solid var(--line2);border-radius:9px;padding:9px 11px;background:var(--warm);width:100%;}
-  input[type=number]::placeholder{color:var(--faint);}
+  input[type=number]:placeholder-shown{border-color:var(--pk);background:#F3FAF7;}
   input[type=number]:focus{outline:none;border-color:var(--pk);box-shadow:0 0 0 3px rgba(78,154,130,.18);}
   input[type=number].inline-num{display:inline-block;width:54px;font-size:14px;font-weight:600;color:var(--ink);border:1.5px solid var(--pk);border-radius:7px;padding:2px 6px;background:var(--warm);text-align:center;vertical-align:baseline;margin:0 2px;}
   input[type=number].inline-num:focus{outline:none;box-shadow:0 0 0 3px rgba(78,154,130,.18);}
@@ -141,6 +141,7 @@
   .nav{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:26px;}
   .btn{font-family:var(--sans);font-size:14px;font-weight:600;border-radius:11px;padding:11px 18px;cursor:pointer;border:1.5px solid var(--line2);background:var(--surface);color:var(--ink);}
   .btn-next{background:var(--ahv);color:#fff;border-color:var(--ahv);margin-left:auto;}
+  .btn-next:disabled{opacity:.45;cursor:not-allowed;}
   .btn-back,.btn-reset{color:var(--soft);}
   .hc-lead{font-size:14.5px;color:var(--ink);margin:6px 0 2px;}
   .hc-lead b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums;}
@@ -231,11 +232,11 @@
     <div class="card"><p class="eyebrow">Deine Angaben</p>
     <p class="sfind">Zuerst zwei Angaben, die wir unterwegs brauchen:</p>
     <div class="basics">
-      <div class="bfld"><label>Alter</label><input id="alter" type="number" value="" placeholder="z.B. 44"></div>
-      <div class="bfld"><label>Bruttoeinkommen pro Monat</label><input id="lohn" type="number" value="" placeholder="z.B. 8000"><div class="swhere">Daraus leiten wir später ab, welches Einkommen du im Alter etwa brauchst. Erwartest du bis zur Pensionierung einen deutlich höheren Lohn, kannst du auch diesen eintragen. Dann wird dein Ziel entsprechend höher, deine Renten bleiben aber so, wie sie in den offiziellen Unterlagen stehen.</div></div>
+      <div class="bfld"><label>Alter</label><input id="alter" type="number" value="" placeholder=" "></div>
+      <div class="bfld"><label>Bruttoeinkommen pro Monat</label><input id="lohn" type="number" value="" placeholder=" "><div class="swhere">Daraus leiten wir später ab, welches Einkommen du im Alter etwa brauchst. Erwartest du bis zur Pensionierung einen deutlich höheren Lohn, kannst du auch diesen eintragen. Dann wird dein Ziel entsprechend höher, deine Renten bleiben aber so, wie sie in den offiziellen Unterlagen stehen.</div></div>
     </div>
     </div>
-    <div class="nav"><span></span><button class="btn btn-next" onclick="go(1)">Weiter zur 1. Säule →</button></div>
+    <div class="nav"><span class="hint" id="step1-hint" style="margin:0">Trag Alter und Bruttoeinkommen ein, dann geht es weiter.</span><button class="btn btn-next" id="btn-step1" onclick="go(1)" disabled>Weiter zur 1. Säule →</button></div>
   </section>
 
   <!-- SCHRITT 2 · AHV -->
@@ -268,12 +269,12 @@
     </div>
     <div class="card"><p class="eyebrow">Deine Zahl</p>
     <p class="sfind">Deine voraussichtliche AHV-Rente bekommst du kostenlos über die Rentenvorausberechnung deiner Ausgleichskasse. Die Bearbeitung dauert etwa drei Wochen. Fürs Erste genügt ein geschätzter Näherungswert.</p>
-    <div class="sinput"><label>AHV-Rente pro Monat (ab 65)</label><div class="inrow"><input id="ahv65" type="number" value="" placeholder="z.B. 1660" max="2520"><button type="button" class="btn-max" onclick="setAhvMax()">Maximum</button></div><div class="swhere">Die Monatsrente laut Vorausberechnung, höchstens CHF 2'520. Hast du immer volle Beiträge bezahlt, nimm das Maximum.</div></div>
+    <div class="sinput"><label>AHV-Rente pro Monat (ab 65)</label><div class="inrow"><input id="ahv65" type="number" value="" placeholder=" " max="2520"><button type="button" class="btn-max" onclick="setAhvMax()">Maximum</button></div><div class="swhere">Die Monatsrente laut Vorausberechnung, höchstens CHF 2'520. Hast du immer volle Beiträge bezahlt, nimm das Maximum.</div></div>
     <details class="estim">
       <summary>Ich kenne die Zahl noch nicht und möchte sie schätzen</summary>
       <div class="estim-body">
         <p>Aus deinem Einkommen und deinen Beitragsjahren schätzen wir einen Startwert. Ersetze ihn später durch die offizielle Rentenvorausberechnung.</p>
-        <div class="sinput"><label>Ab welchem Alter in der Schweiz erwerbstätig?</label><input id="eintritt-ahv" type="number" value="" placeholder="z.B. 25"></div>
+        <div class="sinput"><label>Ab welchem Alter in der Schweiz erwerbstätig?</label><input id="eintritt-ahv" type="number" value="" placeholder=" "></div>
         <div class="estim-result">Geschätzte AHV-Rente: <b id="est-ahv">CHF 1'660</b> / Monat</div>
         <button class="btn-estim" onclick="applyEstim('ahv')">Wert übernehmen</button>
       </div>
@@ -281,7 +282,7 @@
     <p class="sfind" style="margin-top:22px">Hast du vor deinem Zuzug in die Schweiz im Ausland gearbeitet? Dann fehlen dir hier Beitragsjahre, dafür hast du im früheren Land oft einen eigenen Rentenanspruch. Damit dein Bild vollständig ist, fragen wir diese Rente hier ab.</p>
     <div class="basics">
       <div class="bfld"><label>Hast du einen Rentenanspruch aus dem Ausland?</label><div class="seg" id="ausland-toggle" style="margin-top:2px;align-self:flex-start"><button data-a="nein" aria-pressed="true">Nein</button><button data-a="ja" aria-pressed="false">Ja</button></div></div>
-      <div class="bfld" id="ausland-field"><label>Rente aus dem Ausland pro Monat (geschätzt)</label><input id="ausland" type="number" value="" placeholder="z.B. 200"><div class="swhere">Eine Näherung genügt. Die dortige Rentenversicherung zahlt sie dir später nur auf Antrag.</div></div>
+      <div class="bfld" id="ausland-field" style="display:none"><label>Rente aus dem Ausland pro Monat (geschätzt)</label><input id="ausland" type="number" value="" placeholder=" "><div class="swhere">Eine Näherung genügt. Die dortige Rentenversicherung zahlt sie dir später nur auf Antrag.</div></div>
     </div>
     </div>
     <div class="zwischen" style="--c:var(--ahv)">
@@ -319,12 +320,12 @@
     <div class="card"><p class="eyebrow">Deine Zahl</p>
     <p class="sfind">Diese Zahl steht als ‚voraussichtliche Altersrente' auf deinem Vorsorgeausweis. Den schickt dir deine Pensionskasse jedes Jahr zu. Bei den meisten Kassen findest du ihn auch jederzeit im Online-Portal.</p>
     <p class="sfind">Die Prognose rechnet mit deinem heutigen Lohn und den heutigen Sätzen deiner Kasse. Bis zur Pensionierung kann sich noch einiges verschieben: Lohnerhöhungen, ein Stellenwechsel mit anderer Pensionskasse oder angepasste Umwandlungssätze. Solche Änderungen liegen meist im Bereich von einigen Prozent. Als Grössenordnung ist die Zahl auf dem Ausweis verlässlich.</p>
-    <div class="sinput"><label>PK-Rente pro Monat (ab 65)</label><input id="pkrente" type="number" value="" placeholder="z.B. 2270"></div>
+    <div class="sinput"><label>PK-Rente pro Monat (ab 65)</label><input id="pkrente" type="number" value="" placeholder=" "></div>
     <details class="estim">
       <summary>Ich kenne die Zahl noch nicht und möchte grob schätzen</summary>
       <div class="estim-body">
         <p>Achtung: Diese Schätzung ist sehr grob. Sie kommt nur aus Lohn und Jahren, ohne deinen Vorsorgeausweis, und kann leicht um ±30% danebenliegen. Nimm sie als Startwert und ersetze sie, sobald du den Ausweis hast.</p>
-        <div class="sinput"><label>Ab welchem Alter in der Schweiz erwerbstätig?</label><input id="eintritt-pk" type="number" value="" placeholder="z.B. 25"></div>
+        <div class="sinput"><label>Ab welchem Alter in der Schweiz erwerbstätig?</label><input id="eintritt-pk" type="number" value="" placeholder=" "></div>
         <div class="estim-result">Geschätzte PK-Rente: <b id="est-pk">CHF 1'560</b> / Monat</div>
         <button class="btn-estim" onclick="applyEstim('pk')">Wert übernehmen</button>
       </div>
@@ -359,21 +360,21 @@
     </svg>
     <p class="sexp">Für die Rechnung nehmen wir drei Varianten an: Konto oder Versicherung mit 0,5% Rendite pro Jahr, ausgewogen mit 2,5%, aktienlastig mit 5%. Alle drei Sätze sind bewusst vorsichtig gewählt und verstehen sich ohne Abzug der Teuerung. Wähle die Variante, die deiner heutigen Anlage am nächsten kommt.</p>
     <p class="sfind">Wie viel du bereits angespart hast, siehst du auf dem Auszug deines 3a-Kontos oder -Depots.</p>
-    <div class="sinput"><label>Bereits angespartes 3a-Kapital</label><input id="s3akap" type="number" value="" placeholder="z.B. 100000"></div>
+    <div class="sinput"><label>Bereits angespartes 3a-Kapital</label><input id="s3akap" type="number" value="" placeholder=" "></div>
     <div class="sinput" style="margin-top:14px"><label>Anlageform deiner Säule 3a</label><div class="seg sm" id="s3a-strat" role="group"><button data-r="0.005" aria-pressed="false">Konto / Versicherung</button><button data-r="0.025" aria-pressed="true">Ausgewogen</button><button data-r="0.05" aria-pressed="false">Aktienlastig</button></div></div>
-    <div class="sinput" style="margin-top:14px"><label>Geplanter Beitrag pro Jahr (ab jetzt)</label><input id="s3abeitrag" type="number" value="" placeholder="z.B. 7000"><div class="swhere">Unsicher? Nimm den Betrag, den du heute schon einzahlst.</div></div>
+    <div class="sinput" style="margin-top:14px"><label>Geplanter Beitrag pro Jahr (ab jetzt)</label><input id="s3abeitrag" type="number" value="" placeholder=" "><div class="swhere">Unsicher? Nimm den Betrag, den du heute schon einzahlst.</div></div>
 
     </div>
     <div class="card"><p class="eyebrow">Säule 3b</p>
     <p class="sexp">Neben der gebundenen Säule 3a gibt es noch dein übriges Erspartes: Sparkonten, Wertschriften, ein ETF-Depot, vielleicht ein Erbe oder eine Lebensversicherung mit Auszahlung. Das nennt man Säule 3b. Dazu gehört alles, was du freiwillig zurücklegst, ohne dass es gebunden ist. Steuerlich gibt es dafür keinen Abzug. Dafür kommst du jederzeit ran.</p>
     <p class="sexp">Ob du dieses Geld zur Altersvorsorge zählst, ist deine Sache. Vielleicht ist es für Wohneigentum oder als Reserve gedacht, vielleicht legst du es ohnehin fürs Alter zurück. Deshalb zeigen wir dir dein Ergebnis später in beiden Varianten, mit und ohne weiteres Vermögen. Trag hier einfach ein, was du bis 65 etwa haben wirst. Eine grobe Schätzung genügt.</p>
-    <div class="sinput"><label>Weiteres Vermögen mit 65 (geschätzt)</label><input id="s3b" type="number" value="" placeholder="0"></div>
+    <div class="sinput"><label>Weiteres Vermögen mit 65 (geschätzt)</label><input id="s3b" type="number" value="" placeholder=" "></div>
     <details class="estim">
       <summary>Ich weiss nicht, wie viel das mit 65 sein wird, und möchte grob schätzen</summary>
       <div class="estim-body">
         <p>Aus deinem heutigen Vermögen, deinem jährlichen Sparbetrag und der Anlageform rechnen wir hoch, was bis 65 zusammenkommt.</p>
-        <div class="sinput"><label>Heutiges Vermögen ausserhalb der Vorsorge</label><input id="s3b-kap" type="number" value="" placeholder="z.B. 30000"></div>
-        <div class="sinput"><label>Davon jährlich zusätzlich gespart</label><input id="s3b-spar" type="number" value="" placeholder="z.B. 3000"></div>
+        <div class="sinput"><label>Heutiges Vermögen ausserhalb der Vorsorge</label><input id="s3b-kap" type="number" value="" placeholder=" "></div>
+        <div class="sinput"><label>Davon jährlich zusätzlich gespart</label><input id="s3b-spar" type="number" value="" placeholder=" "></div>
         <div class="sinput"><label>Anlageform</label><div class="seg sm" id="s3b-strat" role="group"><button data-r="0.005" aria-pressed="false">Konto</button><button data-r="0.025" aria-pressed="true">Ausgewogen</button><button data-r="0.05" aria-pressed="false">Aktienlastig</button></div></div>
         <div class="estim-result">Geschätztes Vermögen mit 65: <b id="est-s3b">CHF 0</b></div>
         <button class="btn-estim" onclick="applyEstim('s3b')">Wert übernehmen</button>
@@ -533,7 +534,7 @@
       <h3>Weiteres Vermögen (3b)</h3>
       <p>Dein übriges Erspartes ausserhalb der Vorsorge. Schalte es ein oder aus, um dein Bild mit und ohne zu sehen. Oder verändere den Betrag, den du bis 65 erwartest.</p>
       <div class="lever"><div class="top"><span class="lab">Mitrechnen?</span></div><div class="seg" id="r-s3b-mit" role="group"><button data-m="ja" aria-pressed="true">Mit</button><button data-m="nein" aria-pressed="false">Ohne</button></div></div>
-      <div class="lever" id="r-s3b-wrap"><div class="top"><span class="lab">Vermögen mit 65</span><span class="val" id="lv-s3b">CHF 0</span></div><input type="number" id="r-s3b" min="0" step="1000" value="0" placeholder="z.B. 150000"></div>
+      <div class="lever" id="r-s3b-wrap"><div class="top"><span class="lab">Vermögen mit 65</span><span class="val" id="lv-s3b">CHF 0</span></div><input type="number" id="r-s3b" min="0" step="1000" value="0"></div>
     </div>
 
     <div class="sheet-echo">Mit dieser Einstellung: <b id="m-brutto">CHF 5'250</b> / Mt. · Lücke <b id="m-luecke" class="neg">CHF 1'150</b></div>
@@ -681,6 +682,7 @@ function beforeAfter(key,before,after){
   }
 }
 function render(){
+  {const ok=step1Ready();const b=$('btn-step1');if(b)b.disabled=!ok;const hn=$('step1-hint');if(hn)hn.style.visibility=ok?'hidden':'visible';}
   const base=computeBase();fillResult('b',base);
   const scen=computeScenario();fillResult('s',scen);
   setTxt('lv-age',scen.pensAlter);
@@ -719,7 +721,9 @@ function render(){
 /* Navigation: 6 Schritte */
 const STEPS=['Übersicht','AHV','Pensionskasse','Private Vorsorge','Dein Ergebnis','Szenarien'];
 let step=0;
+function step1Ready(){return val('alter')>0&&val('lohn')>0;}
 function go(n){
+  if(n>0&&!step1Ready()){n=0;}
   step=Math.max(0,Math.min(5,n));
   document.querySelectorAll('.step').forEach(s=>s.classList.toggle('active',parseInt(s.dataset.step)===step));
   document.querySelectorAll('#progress .segs button').forEach(b=>{const i=parseInt(b.dataset.step);b.setAttribute('aria-current',i===step?'true':'false');b.setAttribute('data-done',i<step?'true':'false');});
